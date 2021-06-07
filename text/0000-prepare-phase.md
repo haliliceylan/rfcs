@@ -25,7 +25,6 @@ This is a proposal for a new Lifecycle phase, called "prepare", that would run b
 Parity with Pack: A Lifecycle Prepare phase should make it easier for Platform Implementers to achieve parity with features of Pack. Today, features like project.toml are only supported by Pack, and a new platform would need to write it’s own parser.
 
 The prepare phase would support the following features and capabilities:
-* [Stack buildpacks](https://github.com/buildpacks/rfcs/pull/111), which require a phase to read run-image mixins validation prior to detection
 * [Inline buildpacks](https://github.com/buildpacks/rfcs/blob/main/text/0048-inline-buildpack.md), which require parsing of the `project.toml` in the lifecycle
 * [Lifecycle configuration](https://github.com/buildpacks/rfcs/pull/128)
 
