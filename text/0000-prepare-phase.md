@@ -1,8 +1,8 @@
 # Meta
 [meta]: #meta
 - Name: Prepare Phase
-- Start Date: 2021-01-13
-- Author(s): [@jkutner](github.com/jkutner/)
+- Start Date: 2021-06-08
+- Author(s): [@jkutner](github.com/jkutner/) & [@natalieparellano](github.com/natalieparellano/) & [@haliliceylan](github.com/haliliceylan/)
 - RFC Pull Request: (leave blank)
 - CNB Pull Request: [buildpacks/spec#176](https://github.com/buildpacks/spec/pull/176)
 - CNB Issue: (leave blank)
@@ -22,6 +22,8 @@ This is a proposal for a new Lifecycle phase, called "prepare", that would run b
 # Motivation
 [motivation]: #motivation
 
+Parity with Pack: A Lifecycle Prepare phase should make it easier for Platform Implementers to achieve parity with features of Pack. Today, features like project.toml are only supported by Pack, and a new platform would need to write it’s own parser.
+
 The prepare phase would support the following features and capabilities:
 * [Stack buildpacks](https://github.com/buildpacks/rfcs/pull/111), which require a phase to read run-image mixins validation prior to detection
 * [Inline buildpacks](https://github.com/buildpacks/rfcs/blob/main/text/0048-inline-buildpack.md), which require parsing of the `project.toml` in the lifecycle
@@ -29,8 +31,7 @@ The prepare phase would support the following features and capabilities:
 
 # What it is
 [what-it-is]: #what-it-is
-
-The prepare phase will run before all other phases, and prepare the execution environment for a buildpack build. This phase will have access to secrets and credentials used to access registries and other services.
+A new Lifecycle phase and associated binary should be available to Platform Implementers, and should be executed by Pack. The prepare phase will run before all other phases, and prepare the execution environment for a buildpack build. This phase will have access to secrets and credentials used to access registries and other services.
 
 ## Responsibilities
 
