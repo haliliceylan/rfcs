@@ -22,7 +22,7 @@ This is a proposal for a new Lifecycle phase, called "prepare", that would run b
 # Motivation
 [motivation]: #motivation
 
-Parity with Pack: A Lifecycle Prepare phase should make it easier for Platform Implementers to achieve parity with features of Pack. Today, features like project.toml are only supported by Pack, and a new platform would need to write it’s own parser.
+Parity with Pack: A Lifecycle Prepare phase should make it easier for Platform Implementers to achieve parity with features of Pack. Today, features like project.toml are only supported by Pack, and a new platform would need to write its own parser.
 
 The prepare phase would support the following features and capabilities:
 * [Inline buildpacks](https://github.com/buildpacks/rfcs/blob/main/text/0048-inline-buildpack.md), which require parsing of the `project.toml` in the lifecycle
@@ -63,11 +63,9 @@ A new Lifecycle phase and associated binary should be available to Platform Impl
 # How it Works
 [how-it-works]: #how-it-works
 
-The prepare phase would be implemented as the `/cnb/lifecycle/preparer` binary. A platform MUST execute this phases either by invoking the `/cnb/lifecycle/preparer` binary or by executing `/cnb/lifecycle/creator`.
+The prepare phase would be implemented as the `/cnb/lifecycle/preparer` binary. A platform MAY execute this phases either by invoking the `/cnb/lifecycle/preparer` binary or by executing `/cnb/lifecycle/creator`.
 
 The `preparer` binary will have access to the [`Keychain`](https://github.com/buildpacks/lifecycle/blob/main/auth/env_keychain.go), and MUST NOT execute arbitrary code provided by either the buildpack user or buildpack author.
-
-The [logic in the `analyzer` phase that reads image metadata and outputs an `analyzed.toml`](https://github.com/buildpacks/lifecycle/blob/main/analyzer.go#L34-L40) would be moved into the `preparer`.
 
 The [logic in `pack` that parses a `project.toml`](https://github.com/buildpacks/pack/blob/main/project/project.go) would be copied or moved into the `preparer`.
 
